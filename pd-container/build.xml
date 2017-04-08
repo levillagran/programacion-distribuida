@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Programación Distribuida Core" basedir="." default="jar">
+
+    <!-- Local system paths -->
+    <property file="${basedir}/build.properties"/>
+    <property name="lib.dir" value="${basedir}/lib"/>
+	
+	<property name="out.file.core" value="pd-contenedor-v${build.version}"/>
+
+	<path id="jre.classpath">
+	  <pathelement location="${java.home}\lib" />
+	</path>
+
+	<path id="compile.classpath">
+
+		<path location="./build/classes" />
+		
+		<fileset dir="${basedir}/lib">
+	    	<include name="*.jar"/>
+		</fileset>
+    </path>
+	
+	<!-- =================================================================== -->
+	<!-- Compiles all the classes                                            -->
+	<!-- =================================================================== -->
+	<target name="clean">
+		<delete dir="${build.release}/build"/>
+		<delete dir="${build.release}/build" includes="${build.release}/**"/>
+	</target>
+	
+    <target name="compilar">
+
+        <echo>+---------------------------------------------------+</echo>
+        <echo>|                                                   |</echo>
+        <echo>| COMPILANDO                                        |</echo>
+        <echo>|                                                   |</echo>
+        <echo>+---------------------------------------------------+</echo>
+
+    	<mkdir dir="${build.release}/build"/>
+
+        <javac
+        	bootclasspathref="jre.classpath"
+            destdir="${build.release}/build"
+            classpathref="compile.classpath"
+            debug="on"
+            deprecation="on"
+            optimize="off"
+        	includejavaruntime="yes"
+        	includeantruntime="no"
+            >
+
+            <src path="${basedir}/src"/>
+        </javac>
+
+    </target>
+
+	<target name="jar" depends="compilar">
+		
+		<tstamp>  
+			<format property="timenow" pattern="yyyyMMdd" />  
+		</tstamp>  
+		
+        <echo>+-------------------------------------------------------+</echo>
+        <echo>|                                                       |</echo>
+        <echo>| GENERANDO ARCHIVO ${out.file.core}-${timenow}.jar     |</echo>
+        <echo>|                                                       |</echo>
+        <echo>+-------------------------------------------------------+</echo>
+		
+		<jar destfile="${build.release}/${out.file.core}-${timenow}.jar">
+			
+			<zipfileset dir="${basedir}/src/META-INF" prefix="META-INF">
+				<include name="**"/>
+			</zipfileset>
+			
+			<zipfileset dir="${basedir}/src">
+				<include name="*.xml"/>
+				<include name="*.properties"/>
+			</zipfileset>
+
+			<zipfileset dir="${build.release}/build" includes="**/*.class"/>
+		</jar>
+		
+		<jar destfile="${build.release}/${out.file.core}.jar">
+					
+			<zipfileset dir="${basedir}/src/META-INF" prefix="META-INF">
+				<include name="**"/>
+			</zipfileset>
+			
+			<zipfileset dir="${basedir}/src">
+				<include name="*.xml"/>
+				<include name="*.properties"/>
+			</zipfileset>
+
+			<zipfileset dir="${build.release}/build" includes="**/*.class"/>
+		</jar>
+
+		
+	</target>
+
+</project>
