@@ -4,7 +4,7 @@ import com.distribuida.componentes.interfaces.TransaccionBancaria;
 import com.distribuida.contenedor.DistribuidaContenedor;
 import com.distribuida.contenedor.impl.AnotacionesDistribuidaContenedor;
 
-public class TestContenedorAnotaciones {
+public class TestPdContainerAnnotations {
 
 	public static final String  PACKAGE_TO_SCAN = "com.distribuida.componentes";
 	

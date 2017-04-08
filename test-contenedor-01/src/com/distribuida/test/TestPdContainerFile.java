@@ -4,7 +4,7 @@ import com.distribuida.componentes.interfaces.TransaccionBancaria;
 import com.distribuida.contenedor.DistribuidaContenedor;
 import com.distribuida.contenedor.impl.ClasspathFileDistribuidaContenedor;
 
-public class TestContenedorFile {
+public class TestPdContainerFile {
 
 	public static final String  CONFIG_FILE = "com/distribuida/test/config.properties";
 	
