@@ -1,2 +1,2 @@
-# Programación Distribuida
+# Programacion Distribuida
 
