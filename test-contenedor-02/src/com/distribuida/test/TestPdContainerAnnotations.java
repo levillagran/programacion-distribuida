@@ -2,7 +2,7 @@ package com.distribuida.test;
 
 import com.distribuida.componentes.interfaces.TransaccionBancaria;
 import com.distribuida.contenedor.DistribuidaContenedor;
-import com.distribuida.contenedor.impl.AnotacionesDistribuidaContenedor;
+import com.distribuida.contenedor.impl.AnnotationsDistribuidaContenedor;
 
 public class TestPdContainerAnnotations {
 
@@ -11,7 +11,7 @@ public class TestPdContainerAnnotations {
 	public static void main(String[] args) {
 		
 		
-		DistribuidaContenedor contenedor = new AnotacionesDistribuidaContenedor( PACKAGE_TO_SCAN );
+		DistribuidaContenedor contenedor = new AnnotationsDistribuidaContenedor( PACKAGE_TO_SCAN );
 		
 		contenedor.iniciar( );
 		

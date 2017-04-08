@@ -11,14 +11,14 @@ import com.distribuida.contenedor.DistribuidaContenedor;
 
 public class ClasspathFileDistribuidaContenedor implements DistribuidaContenedor {
 	
-	private String fileName = "";
+	private String nombreArchivoConfiguracion = "";
 	
 	protected Map<String, Object> componentesRegistrados = new HashMap<>();
 	
 	protected Map<String, Integer> componentesIndices = new HashMap<>();
 	
-	public ClasspathFileDistribuidaContenedor( String fileName ) {
-		this.fileName = fileName;
+	public ClasspathFileDistribuidaContenedor( String nombreArchivoConfiguracion ) {
+		this.nombreArchivoConfiguracion = nombreArchivoConfiguracion;
 	}
 	
 	public void iniciar( ) {
@@ -48,7 +48,7 @@ public class ClasspathFileDistribuidaContenedor implements DistribuidaContenedor
 			
 			Properties props = new Properties( );
 			
-			fis = ClasspathFileDistribuidaContenedor.class.getClassLoader().getResourceAsStream( fileName );
+			fis = ClasspathFileDistribuidaContenedor.class.getClassLoader().getResourceAsStream( nombreArchivoConfiguracion );
 			
 			props.load( fis );
 			

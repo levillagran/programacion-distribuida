@@ -11,14 +11,14 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.reflect.ClassPath;
 import com.google.common.reflect.ClassPath.ClassInfo;
 
-public class AnotacionesDistribuidaContenedor implements DistribuidaContenedor {
+public class AnnotationsDistribuidaContenedor implements DistribuidaContenedor {
 	
-	private String packageToScan = "";
+	private String paqueteEscanear = "";
 	
 	protected Map<String, Object> componentesRegistrados = new HashMap<>();
 	
-	public AnotacionesDistribuidaContenedor( String packageToScan ) {
-		this.packageToScan = packageToScan;
+	public AnnotationsDistribuidaContenedor( String paqueteEscanear ) {
+		this.paqueteEscanear = paqueteEscanear;
 	}
 	
 	public void iniciar( ) {
@@ -43,9 +43,9 @@ public class AnotacionesDistribuidaContenedor implements DistribuidaContenedor {
 	private void escanearComponentes( ) {
 		
 		try {
-			ClassPath classPath = ClassPath.from( AnotacionesDistribuidaContenedor.class.getClassLoader( ) );
+			ClassPath classPath = ClassPath.from( AnnotationsDistribuidaContenedor.class.getClassLoader( ) );
 			
-			ImmutableSet<ClassInfo> clases = classPath.getTopLevelClassesRecursive( packageToScan );
+			ImmutableSet<ClassInfo> clases = classPath.getTopLevelClassesRecursive( paqueteEscanear );
 			
 			for( ClassInfo cls:clases ) {
 				
