@@ -25,4 +25,5 @@ public class TransaccionBancariaImpl implements TransaccionBancaria {
 		
 		notificaciones.notificar( "Transaccion realizada." );
 	}
+	
 }
